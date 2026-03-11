@@ -1,0 +1,23 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Context Demo
+
+on:
+  push:
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: "Context Demo Job"
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: "Contexto de git hub"
+        run: |
+          echo "Repositorio: ${{github.repository}}"
+          echo "Rama: ${{github.ref_name}}"
+          echo "Commit SHA ${{github.sha}}"
+          echo "Actor ${{github.actor}}"
+          echo "Evento ${{github.event_name}}"
