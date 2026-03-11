@@ -1,0 +1,34 @@
+
+name: Triggers Filters Demo
+
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main", "release/**" ] #Cualquier rama que empeice conr release
+    paths:
+      - "src/**"  #solo si cambia algo dentro de src
+      - "tests/**"  #solo si cambia algo de tests
+  
+  pull_request:
+    branches:
+      - main
+      - release/**
+    paths:
+      - "src/**"  #solo si cambia algo dentro de src
+      - "tests/**"  #solo si cambia algo de tests
+
+permissions: 
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Confirmar que el trigger pasó los filtros
+        run: |
+          echo "Branch: ${{github.ref_name}}"
+          echo "Evento: ${{github.event_name}}"
+          echo "Commit: ${{github.sha}}"
