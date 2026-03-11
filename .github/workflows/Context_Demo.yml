@@ -21,3 +21,9 @@ jobs:
           echo "Commit SHA ${{github.sha}}"
           echo "Actor ${{github.actor}}"
           echo "Evento ${{github.event_name}}"
+
+      - name: Contexto de git hub
+        run: |
+          echo "Sistema operativo del runer ${{runner.os}}"
+          echo "Directorio: ${{runner.temp}}"
+          
