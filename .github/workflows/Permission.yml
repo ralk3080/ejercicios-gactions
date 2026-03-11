@@ -1,0 +1,24 @@
+
+name: Permissions Demo
+
+on:
+  push:
+
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  solo-lectura:
+    runs-on: ubuntu-latest
+
+    permissions: 
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      # Runs a single command using the runners shell
+      - name: Verificar que el checkout funciono con solo read
+        run: ls -lah
+
+    
