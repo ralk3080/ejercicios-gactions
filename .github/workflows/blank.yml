@@ -1,0 +1,37 @@
+name: Variables ambiente ENV
+
+on:
+  push:
+  workflow_dispatch:
+
+env:
+  SALUDO: "Hola desde workflow"
+
+jobs:
+  demo-env:
+    runs-on: ubuntu-latest
+
+    env:
+      SALUDO: "Hola desde el job"
+
+    steps:
+      - name: "Mostrar variable del job"
+        run: echo "Saludo = $SALUDO"
+
+      - name: "Mostrar variable del step"
+        env:
+          SALUDO: "Hola desde el STEP"
+        run: echo "Saludo = $SALUDO"
+
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      - name: "Mostrar variable del workflow"
+        run: echo "SALUDO = $SALUDO"
+
+  demo2-env:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Mostrar variable del workflow en otro job"
+        run: echo "SALUDO = $SALUDO"
